@@ -1,10 +1,10 @@
 package com.adenterprise.sapceinvaders.objects;
 
 
-public class monstre1 extends Monstres{
+public class Monstre1 extends Monstres{
 
 
-    public monstre1(int linea) {
+    public Monstre1(int linea) {
         super(1, linea, 1);
     }
 

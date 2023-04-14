@@ -1,10 +1,10 @@
 package com.adenterprise.sapceinvaders.objects;//Aram
 
-public class nau {
+public class Nau {
     private int posicio;
     private int vides;
 
-    public nau(int posicio, int vides) {
+    public Nau(int posicio, int vides) {
         this.posicio = posicio;
         this.vides = vides;
     }
@@ -32,7 +32,7 @@ public class nau {
     }
 
     public static void main(String[] args) {
-        nau n1=new nau(1, 3);
+        Nau n1=new Nau(1, 3);
         n1.showData();
     }
 }

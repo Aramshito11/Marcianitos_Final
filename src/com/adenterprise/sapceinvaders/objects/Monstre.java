@@ -47,10 +47,10 @@ abstract class Monstres{
 }
 
 
-public class monstre {
+public class Monstre {
     public static void main(String[] args) {
-        monstre1 m1=new monstre1(1);
-        monstre2 m2=new monstre2(2, false);
+        Monstre1 m1=new Monstre1(1);
+        Monstre2 m2=new Monstre2(2, false);
         m1.showData();
         m2.showData();
     }

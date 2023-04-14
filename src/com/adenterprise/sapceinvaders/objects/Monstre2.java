@@ -1,12 +1,12 @@
 package com.adenterprise.sapceinvaders.objects;
 
 
-public class monstre2 extends Monstres{
+public class Monstre2 extends Monstres{
 
     private boolean arma;
 
 
-    public monstre2(int linea, boolean arma) {
+    public Monstre2(int linea, boolean arma) {
         super(1, linea, 2);
         this.arma = arma;
     }
