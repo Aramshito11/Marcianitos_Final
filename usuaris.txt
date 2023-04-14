@@ -1,0 +1,15 @@
+El nom de l'usuari es: Dani
+L'edat de l'usuari es: 18
+Partida de l'usuari es: 0
+
+El nom de l'usuari es: Aram
+L'edat de l'usuari es: 18
+Partida de l'usuari es: 0
+
+El nom de l'usuari es: Dani
+L'edat de l'usuari es: 19
+Partida de l'usuari es: 0
+
+El nom de l'usuari es: Jose
+L'edat de l'usuari es: 35
+Partida de l'usuari es: 0
