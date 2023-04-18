@@ -1,6 +1,20 @@
 package com.adenterprise.sapceinvaders.objects;//Aram
+import com.adenterprise.sapceinvaders.file.usuaris;
+
+/**
+ * objecte persona on cada usuari tindra el nom, edat i el regisstre de partides.
+ * @author dani
+ */
+
+import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
+
+/**
+ * Creo l'objecte
+ */
 public class Persona {
     private String nom;
     private int edat;
@@ -10,6 +24,7 @@ public class Persona {
         this.nom = nom;
         this.edat = edat;
         this.numPartides = 0;
+        escriureUserFitxer();
     }
 
     public String getNom() {
@@ -35,14 +50,110 @@ public class Persona {
     public void setNumPartides(int numPartides) {
         this.numPartides = numPartides;
     }
+    private void escriureUserFitxer() {
+        escriureUser();
+    }
+    public void showData(){
+        System.out.println("\n\nPERSONA");
+        System.out.println("Nom: "+getNom());
+        System.out.println("Edat: "+getEdat());
+        System.out.println("Numero partides: "+getNumPartides());
+    }
+
+    public int sumarPartida(){
+        numPartides++;
+        return numPartides;
+    }
+
+
+
+        /**
+         * mètode per esciure el nom, l'edat i les partides a un fitxer .txt
+         */
+        public void escriureUser () {
+            File usuaris = new File("usuaris.txt");
+            try {
+                usuaris.createNewFile();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+            try {
+                FileWriter escriure = new FileWriter("usuaris.txt", true);
+                escriure.write("\nEl nom de l'usuari es: " + nom + "\n");
+                escriure.write("L'edat de l'usuari es: " + edat+ "\n");
+                escriure.write("Partida de l'usuari es: " + numPartides + "\n");
+                escriure.close();
+                System.out.println("Fitxer escrit");
+            } catch (IOException e) {
+                System.out.println("No s'ha pogut escriure en el fitxer");
+                e.printStackTrace();
+            }
+        }
+
+
+        /**
+         * mètode per sobreesciure el numero de partides d'un usuari.
+         */
+        public void sobrescriurePartides () {
+            String fileName = "usuaris.txt";
+            String oldPhrase = "El nom de l'usuari es: " + nom;
+            String newPhrase = "\nEl nom de l'usuari es: " + nom + "\n" +
+                    "L'edat de l'usuari es: " + edat + "\n" +
+                    "Partida de l'usuari es: " + getNumPartides();
+            boolean found = false;
+            boolean deleteNextTwoLines = false;
+
+            try (FileReader fileReader = new FileReader(fileName);
+                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+                String line;
+                String content = "";
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    if (line.contains(oldPhrase)) {
+                        line = line.replaceAll(oldPhrase, newPhrase);
+                        found = true;
+                        deleteNextTwoLines = true;
+                    } else if (deleteNextTwoLines) {
+                        deleteNextTwoLines = false;
+                        bufferedReader.readLine(); // eliminar la siguiente línea
+                        bufferedReader.readLine(); // eliminar la siguiente línea
+                        continue; // saltar a la siguiente iteración del ciclo while
+                    }
+                    content += line + "\n";
+                }
+
+                if (found) {
+                    try (FileWriter fileWriter = new FileWriter(fileName);
+                         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+                        bufferedWriter.write(content);
+                        System.out.println("El fitxer s'ha sobreescrit");
+                    }
+                } else {
+                    System.out.println("No s'ha trobat la informacio al fitxer");
+                }
+            } catch (IOException e) {
+                System.out.println("Error al llegir o escriure al fitxer");
+                e.printStackTrace();
+            }
+        }
+
+        public void ferPartida(){
+            for (int i=0; i<5; i++){
+                sumarPartida();
+            }
+            sobrescriurePartides();
+        }
+
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Escriu el nom d'usuari: ");
+        System.out.print("Escriu el nom d'usuari: ");
         String nom=sc.next();
-        System.out.println("Escriu la teva edat: ");
+        System.out.print("Escriu la teva edat: ");
         int edat=sc.nextInt();
         Persona p1=new Persona(nom, edat);
+        p1.escriureUserFitxer();
 
     }
 }

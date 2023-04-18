@@ -1,5 +1,7 @@
 package com.adenterprise.sapceinvaders.file;
 
+import com.adenterprise.sapceinvaders.objects.Persona;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -7,6 +9,7 @@ import java.io.IOException;
 
 public class usuaris {
     File usuaris=new File("usuaris.txt");
+
 
     public static void main(String[] args) {
         try {
