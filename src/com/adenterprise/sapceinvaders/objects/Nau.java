@@ -1,20 +1,30 @@
 package com.adenterprise.sapceinvaders.objects;//Aram
 
 public class Nau {
-    private int posicio;
+    private int posicioX;
+    private int posicioY;
     private int vides;
 
-    public Nau(int posicio, int vides) {
-        this.posicio = posicio;
+    public Nau(int posiciox, int posicioy, int vides) {
+        this.posicioX = posiciox;
+        this.posicioY = posicioy;
         this.vides = vides;
     }
 
-    public int getPosicio() {
-        return posicio;
+    public int getPosicioX() {
+        return posicioX;
     }
 
-    public void setPosicio(int posicio) {
-        this.posicio = posicio;
+    public int getPosicioY() {
+        return posicioY;
+    }
+
+    public void setPosicioX(int posicioX) {
+        this.posicioX = posicioX;
+    }
+
+    public void setPosicioY(int posicioY) {
+        this.posicioY = posicioY;
     }
 
     public int getVides() {
@@ -27,12 +37,13 @@ public class Nau {
 
     public void showData(){
         System.out.println("\n\nNAU");
-        System.out.println("Posicio: "+getPosicio());
+        System.out.println("Posicio X: "+getPosicioX());
+        System.out.println("Posicio Y: "+getPosicioY());
         System.out.println("Vides: "+getVides());
     }
 
-    public static void main(String[] args) {
-        Nau n1=new Nau(1, 3);
-        n1.showData();
-    }
+//    public static void main(String[] args) {
+//        Nau n1=new Nau(1, 3);
+//        n1.showData();
+//    }
 }

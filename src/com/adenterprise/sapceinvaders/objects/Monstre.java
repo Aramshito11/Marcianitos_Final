@@ -47,11 +47,11 @@ abstract class Monstres{
 }
 
 
-public class Monstre {
-    public static void main(String[] args) {
-        Monstre1 m1=new Monstre1(1);
-        Monstre2 m2=new Monstre2(2, false);
-        m1.showData();
-        m2.showData();
-    }
-}
+//public class Monstre {
+//    public static void main(String[] args) {
+//        Monstre1 m1=new Monstre1(1);
+//        Monstre2 m2=new Monstre2(2, false);
+//        m1.showData();
+//        m2.showData();
+//    }
+//}
