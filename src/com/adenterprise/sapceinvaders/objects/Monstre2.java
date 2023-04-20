@@ -1,8 +1,12 @@
 package com.adenterprise.sapceinvaders.objects;
 
-
+/**
+ * @uses la classe monstre2 agafa tots els atributs de monstres i en té una de propia que es arma.
+ */
 public class Monstre2 extends Monstres{
-
+    /**
+     * @param si es true tindra arma, sino no
+     */
     private boolean arma;
 
 

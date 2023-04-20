@@ -1,10 +1,10 @@
 
 
-El nom de l'usuari es: mister
-L'edat de l'usuari es: 50
-Partida de l'usuari es: 5
-
 
 El nom de l'usuari es: Aram
-L'edat de l'usuari es: 50
+L'edat de l'usuari es: 19
+Partida de l'usuari es: 5
+
+El nom de l'usuari es: Dani
+L'edat de l'usuari es: 19
 Partida de l'usuari es: 5

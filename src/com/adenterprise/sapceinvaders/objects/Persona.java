@@ -1,4 +1,4 @@
-package com.adenterprise.sapceinvaders.objects;//Aram
+package com.adenterprise.sapceinvaders.objects;
 import com.adenterprise.sapceinvaders.file.usuaris;
 
 /**
@@ -17,17 +17,18 @@ import java.util.List;
 import java.util.Scanner;
 
 
-/**
- * Creo l'objecte
- */
+
 public class Persona {
     private String nom;
     private int edat;
     private int numPartides;
 
-    public Persona(String nom, int edat) {
+    static Scanner sc = new Scanner(System.in);
+    public Persona() {
+        System.out.print("Introdueix el nom d'usuari: ");
+        String nom= sc.next();
         this.nom = nom;
-        this.edat = edat;
+        this.edat = preguntarEdat();;
         this.numPartides = 0;
         escriureUserFitxer();
     }
@@ -70,85 +71,134 @@ public class Persona {
         return numPartides;
     }
 
+    public int preguntarEdat(){
+        Scanner sc = new Scanner(System.in);
+        boolean seguirIntentando = true;
+        int edat=0;
 
 
-        /**
-         * mètode per esciure el nom, l'edat i les partides a un fitxer .txt
-         */
-        public void escriureUser () {
-            File usuaris = new File("usuaris.txt");
+        //CORRETGIR ERROS!!!
+        while (seguirIntentando) {
             try {
-                usuaris.createNewFile();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-            try {
-                FileWriter escriure = new FileWriter("usuaris.txt", true);
-                escriure.write("\nEl nom de l'usuari es: " + nom + "\n");
-                escriure.write("L'edat de l'usuari es: " + edat+ "\n");
-                escriure.write("Partida de l'usuari es: " + numPartides + "\n");
-                escriure.close();
-                System.out.println("Fitxer escrit");
-            } catch (IOException e) {
-                System.out.println("No s'ha pogut escriure en el fitxer");
-                e.printStackTrace();
+                System.out.print("Quina edat tens? ");
+                edat = sc.nextInt();
+                seguirIntentando = false;
+                if (seguirIntentando==false)
+                    return edat;
+            } catch (Exception e) {
+                preguntarEdat();
             }
         }
+        return edat;
+    }
 
 
-        /**
-         * mètode per sobreesciure el numero de partides d'un usuari.
-         */
-        public void sobrescriurePartides () {
-            String fileName = "usuaris.txt";
-            String oldPhrase = "El nom de l'usuari es: " + nom;
-            String newPhrase = "\nEl nom de l'usuari es: " + nom + "\n" +
-                    "L'edat de l'usuari es: " + edat + "\n" +
-                    "Partida de l'usuari es: " + getNumPartides();
-            boolean found = false;
-            boolean deleteNextTwoLines = false;
 
-            try (FileReader fileReader = new FileReader(fileName);
-                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-                String line;
-                String content = "";
-
-                while ((line = bufferedReader.readLine()) != null) {
-                    if (line.contains(oldPhrase)) {
-                        line = line.replaceAll(oldPhrase, newPhrase);
-                        found = true;
-                        deleteNextTwoLines = true;
-                    } else if (deleteNextTwoLines) {
-                        deleteNextTwoLines = false;
-                        bufferedReader.readLine(); // eliminar la siguiente línea
-                        bufferedReader.readLine(); // eliminar la siguiente línea
-                        continue; // saltar a la siguiente iteración del ciclo while
+    /**
+     * mètode per esciure el nom, l'edat i les partides a un fitxer .txt
+     */
+    public void escriureUser () {
+        File usuaris = new File("usuaris.txt");
+        File archivo = new File("C:\\Users\\Dani Gelabert\\Documents\\DAM\\M03 - Programació\\UF4\\projecteFinal\\usuaris.txt");
+        String oldPhrase = "El nom de l'usuari es: " + nom;
+        try {
+            usuaris.createNewFile();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        try {
+            Scanner scanner = new Scanner(archivo);
+            boolean trobar = false;
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine();
+                if (linea.contains(oldPhrase)) {
+                    List<String> frasesSeguents = new ArrayList<>();
+                    frasesSeguents.add(scanner.nextLine());
+                    frasesSeguents.add(scanner.nextLine());
+                    System.out.println("\n\nLECTURA FITXER PARTIDES");
+                    System.out.println(oldPhrase);
+                    for (String seguent : frasesSeguents) {
+                        System.out.println(seguent);
                     }
-                    content += line + "\n";
+                    trobar = true;
                 }
-
-                if (found) {
-                    try (FileWriter fileWriter = new FileWriter(fileName);
-                         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-                        bufferedWriter.write(content);
-                    }
-                } else {
-                    System.out.println("No s'ha trobat la informacio al fitxer");
-                }
-            } catch (IOException e) {
-                System.out.println("Error al llegir o escriure al fitxer");
-                e.printStackTrace();
             }
+            scanner.close();
+            if (trobar == false) {
+                try {
+                    FileWriter escriure = new FileWriter("usuaris.txt", true);
+                    escriure.write("\nEl nom de l'usuari es: " + nom + "\n");
+                    escriure.write("L'edat de l'usuari es: " + edat + "\n");
+                    escriure.write("Partida de l'usuari es: " + numPartides + "\n");
+                    escriure.close();
+                    System.out.println("Fitxer escrit");
+                } catch (IOException e) {
+                    System.out.println("No s'ha pogut escriure en el fitxer");
+                    e.printStackTrace();
+                }
+            }
+        } catch (FileNotFoundException e) {
+                System.out.println("El archivo no existe.");
         }
 
-        public void ferPartida(){
-            for (int i=0; i<5; i++){
-                sumarPartida();
+    }
+
+
+    /**
+     * @uses mètode per sobreesciure el numero de partides d'un usuari.
+     */
+    public void sobrescriurePartides () {
+        String fileName = "usuaris.txt";
+        String oldPhrase = "El nom de l'usuari es: " + nom;
+        String newPhrase = "\nEl nom de l'usuari es: " + nom + "\n" +
+                "L'edat de l'usuari es: " + edat + "\n" +
+                "Partida de l'usuari es: " + getNumPartides();
+        boolean found = false;
+        boolean deleteNextTwoLines = false;
+
+        try (FileReader fileReader = new FileReader(fileName);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            String content = "";
+
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains(oldPhrase)) {
+                    line = line.replaceAll(oldPhrase, newPhrase);
+                    found = true;
+                    deleteNextTwoLines = true;
+                } else if (deleteNextTwoLines) {
+                    deleteNextTwoLines = false;
+                    bufferedReader.readLine(); // eliminar la siguiente línea
+                    bufferedReader.readLine(); // eliminar la siguiente línea
+                    continue; // saltar a la siguiente iteración del ciclo while
+                }
+                content += line + "\n";
             }
-            sobrescriurePartides();
+
+            if (found) {
+                try (FileWriter fileWriter = new FileWriter(fileName);
+                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+                    bufferedWriter.write(content);
+                }
+            } else {
+                System.out.println("No s'ha trobat la informacio al fitxer");
+            }
+        } catch (IOException e) {
+            System.out.println("Error al llegir o escriure al fitxer");
+            e.printStackTrace();
         }
+    }
 
+    public void ferPartida(){
+        for (int i=0; i<5; i++){
+            sumarPartida();
+        }
+        sobrescriurePartides();
+    }
 
+    /**
+     * @uses busca el nom de l'usuari i treu tota la informació del fitxer
+     */
     public void llegirNumPartides () {
         File archivo = new File("C:\\Users\\Dani Gelabert\\Documents\\DAM\\M03 - Programació\\UF4\\projecteFinal\\usuaris.txt");
         String oldPhrase = "El nom de l'usuari es: " + nom;
@@ -172,36 +222,18 @@ public class Persona {
         } catch (FileNotFoundException e) {
             System.out.println("El archivo no existe.");
         }
-
-
-
-
-
-
-//        Path fileName = Paths.get("usuaris.txt");
-//        String oldPhrase = "El nom de l'usuari es: " + nom;
-//
-//        try (InputStream in = Files.newInputStream(fileName);
-//            BufferedReader reader= new BufferedReader(new InputStreamReader(in))){
-//            String line=null;
-//            int contador=0;
-//            while (contador<3){
-//                System.out.println(line);
-//            }
-//            in.close();
-//        }catch (IOException e){
-//            System.out.println("Error: "+e);
-//        }
     }
 
-
+    /**
+     * @uses aquest main només el faig servir per fer proves. Al executar el programa final aquest no fa res
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Escriu el nom d'usuari: ");
         String nom=sc.next();
         System.out.print("Escriu la teva edat: ");
         int edat=sc.nextInt();
-        Persona p1=new Persona(nom, edat);
+        Persona p1=new Persona();
         p1.escriureUserFitxer();
 
     }

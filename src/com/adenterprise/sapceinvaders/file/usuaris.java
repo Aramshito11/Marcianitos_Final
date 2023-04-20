@@ -20,6 +20,9 @@ public class usuaris {
         } catch (IOException e) {
             System.out.println("Ha ocurrido un error al escribir en el archivo.");
             e.printStackTrace();
+            /**
+             * @exception Quan hi hagi qualsevol error salti aquest missatge
+             */
         }
     }
 

@@ -1,6 +1,9 @@
 package com.adenterprise.sapceinvaders.objects;
 
 
+/**
+ * @uses la classe monstre1 agada tota la info de monstres perque no te armes.
+ */
 public class Monstre1 extends Monstres{
 
 
