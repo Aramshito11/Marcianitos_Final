@@ -15,6 +15,8 @@ public class room {
         Nau nau = new Nau(11,5,3);
         room room = new room();
         ArrayList<Bala> balas = new ArrayList<Bala>();
+        ArrayList<Monstre1> monstres1 = new ArrayList<Monstre1>();
+        ArrayList<Monstre2> monstres2 = new ArrayList<Monstre2>();
 
 
 
@@ -27,6 +29,7 @@ public class room {
         for(int i = 0; i < room.sala.length - 8; i++) {
             for(int j = 0; j < room.sala[i].length; j++) {
                 if (i%2==0){
+//                    monstres1.add(new Monstre1())
                     room.sala[i][j] = 'U';
                 } else {
                     room.sala[i][j] = '0';
@@ -120,50 +123,9 @@ public class room {
                             }
                         }
                     }
-
-
-//                    if (room.sala[nau.getPosicioX()][nau.getPosicioY()]!='x'){
-//                        room.sala[nau.getPosicioX()][nau.getPosicioY()]=' ';
-//                    }
                 }
             }
-
-
-//            if (bala1.getEstat() == 2) {
-//                for(int i = 0; i < room.length; i++) {
-//                    for(int j = 0; j < room[i].length; j++) {
-//                        if (room[i][j] == 9702) {
-//                            if (room[i - 1][j] == '0') {
-//                                bala1.setEstat(0);
-//                            }
-//
-//                            room[i][j] = ' ';
-//                            int posX = bala1.getX() - 1;
-//                            int posY = bala1.getY();
-//                            bala1.setX(posX);
-//                            room[posX][posY] = 9702;
-//                            break;
-//                        }
-//                    }
-//                }
-//            }
-//
-//            if (bala1.getEstat() == 1) {
-//                int x = bala1.getX();
-//                int y = bala1.getY();
-//                bala1.setX(x);
-//                room[x][y] = 9702;
-//                bala1.setEstat(2);
-//            }
-//
-//            if (bala1.getEstat() == 0) {
-//                int x = bala1.getX();
-//                j = bala1.getY();
-//                bala1.setX(i);
-//                room[i][j] = ' ';
-//            }
         }
-
     }
 
     static {
