@@ -75,20 +75,21 @@ public class Persona {
         Scanner sc = new Scanner(System.in);
         boolean seguirIntentando = true;
         int edat=0;
+        boolean esEntero = false;
 
-
-        //CORRETGIR ERROS!!!
-        while (seguirIntentando) {
+        do {
+            System.out.print("Quina edat tens? ");
+            String entrada = sc.nextLine();
+        /**
+         * Si no introdueixes un numero salta l'error, i et torna a demanar, perquè el programa no peti.
+         */
             try {
-                System.out.print("Quina edat tens? ");
-                edat = sc.nextInt();
-                seguirIntentando = false;
-                if (seguirIntentando==false)
-                    return edat;
-            } catch (Exception e) {
-                preguntarEdat();
+                edat = Integer.parseInt(entrada);
+                esEntero = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Nomes es pot inserir numeros!");
             }
-        }
+        } while (!esEntero);
         return edat;
     }
 

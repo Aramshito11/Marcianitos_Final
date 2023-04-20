@@ -8,3 +8,8 @@ Partida de l'usuari es: 5
 El nom de l'usuari es: Dani
 L'edat de l'usuari es: 19
 Partida de l'usuari es: 5
+
+
+El nom de l'usuari es: Gilbert
+L'edat de l'usuari es: 14
+Partida de l'usuari es: 5
