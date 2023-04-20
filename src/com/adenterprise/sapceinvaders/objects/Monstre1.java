@@ -6,7 +6,6 @@ package com.adenterprise.sapceinvaders.objects;
  */
 public class Monstre1 extends Monstres{
 
-
     public Monstre1(int linea) {
         super(1, linea, 1);
     }
