@@ -9,6 +9,11 @@ import com.adenterprise.sapceinvaders.file.usuaris;
 import java.io.*;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -126,7 +131,6 @@ public class Persona {
                     try (FileWriter fileWriter = new FileWriter(fileName);
                          BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
                         bufferedWriter.write(content);
-                        System.out.println("El fitxer s'ha sobreescrit");
                     }
                 } else {
                     System.out.println("No s'ha trobat la informacio al fitxer");
@@ -144,6 +148,51 @@ public class Persona {
             sobrescriurePartides();
         }
 
+
+    public void llegirNumPartides () {
+        File archivo = new File("C:\\Users\\Dani Gelabert\\Documents\\DAM\\M03 - Programació\\UF4\\projecteFinal\\usuaris.txt");
+        String oldPhrase = "El nom de l'usuari es: " + nom;
+
+        try {
+            Scanner scanner = new Scanner(archivo);
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine();
+                if (linea.contains(oldPhrase)) {
+                    List<String> frasesSeguents = new ArrayList<>();
+                    frasesSeguents.add(scanner.nextLine());
+                    frasesSeguents.add(scanner.nextLine());
+                    System.out.println("\n\nLECTURA FITXER PARTIDES");
+                    System.out.println(oldPhrase);
+                    for (String seguent : frasesSeguents) {
+                        System.out.println(seguent);
+                    }
+                }
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no existe.");
+        }
+
+
+
+
+
+
+//        Path fileName = Paths.get("usuaris.txt");
+//        String oldPhrase = "El nom de l'usuari es: " + nom;
+//
+//        try (InputStream in = Files.newInputStream(fileName);
+//            BufferedReader reader= new BufferedReader(new InputStreamReader(in))){
+//            String line=null;
+//            int contador=0;
+//            while (contador<3){
+//                System.out.println(line);
+//            }
+//            in.close();
+//        }catch (IOException e){
+//            System.out.println("Error: "+e);
+//        }
+    }
 
 
     public static void main(String[] args) {
