@@ -4,27 +4,29 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class room {
+public class Room {
     public static Scanner teclat;
     private char[][] sala = new char[12][12];
-    public room() {
+    public Room() {
+    }
+
+    public char[][] getSala() {
+        return sala;
     }
 
     public static void main(String[] args) {
 
         Nau nau = new Nau(11,5,3);
-        room room = new room();
+        Room room = new Room();
         ArrayList<Bala> balas = new ArrayList<Bala>();
         ArrayList<Monstre1> monstres1 = new ArrayList<Monstre1>();
         ArrayList<Monstre2> monstres2 = new ArrayList<Monstre2>();
-
 
         for(int i = 0; i < room.sala.length; i++) {
             for(int j = 0; j < room.sala[i].length; j++) {
                 room.sala[i][j] = ' ';
             }
         }
-
         for(int i = 0; i < room.sala.length - 8; i++) {
             for(int j = 0; j < room.sala[i].length; j++) {
                 if (i%2==0){
@@ -35,8 +37,9 @@ public class room {
                     room.sala[i][j] = '0';
                 }
             }
-
         }
+        room.sala[11][5] = 'x';
+
 
         int error = 0;
         int contador = 0;
