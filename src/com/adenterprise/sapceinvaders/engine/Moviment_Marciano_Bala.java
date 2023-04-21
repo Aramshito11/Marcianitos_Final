@@ -77,7 +77,6 @@ public class Moviment_Marciano_Bala {
                                 monstres1.remove(j);
                                 j--;
                             }
-
                         }
                         for (int k=0; k<monstres2.size(); k++){
                             Monstre2 monstre = monstres2.get(k);

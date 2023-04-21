@@ -15,6 +15,7 @@ public class start {
         ArrayList<Monstre1> monstres1 = new ArrayList<Monstre1>();
         ArrayList<Monstre2> monstres2 = new ArrayList<Monstre2>();
         Persona p1 = new Persona();
+
         p1.llegirNumPartides();
         Mapa.IniciarMapa(room, monstres1, monstres2);
 

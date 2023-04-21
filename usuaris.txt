@@ -1,14 +1,10 @@
 
 
-El nom de l'usuari es: A
-L'edat de l'usuari es: 2
+El nom de l'usuari es: aram
+L'edat de l'usuari es: 12
 Partida de l'usuari es: 0
 
 
-El nom de l'usuari es: ar
-L'edat de l'usuari es: 2
+El nom de l'usuari es: jose
+L'edat de l'usuari es: 25
 Partida de l'usuari es: 1
-
-El nom de l'usuari es: gf
-L'edat de l'usuari es: 5
-Partida de l'usuari es: 0

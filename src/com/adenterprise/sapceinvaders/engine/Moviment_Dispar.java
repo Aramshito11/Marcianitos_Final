@@ -9,11 +9,11 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Moviment_Dispar {
-    private static String movAnterior;
+    private static String movAnterior = " ";
     public static Scanner teclat;
 
     public static int move(Room room, Nau nau, ArrayList<Bala> balas){
-        movAnterior=" ";
+
         int error=0;
         String moviment = teclat.next().toLowerCase();
         char[][] tablero= room.getSala();
