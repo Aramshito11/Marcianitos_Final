@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Scanner;
 
 
-
 public class Persona {
     private String nom;
     private int edat;
@@ -100,7 +99,7 @@ public class Persona {
      */
     public void escriureUser () {
         File usuaris = new File("usuaris.txt");
-        File archivo = new File("C:\\Users\\Dani Gelabert\\Documents\\DAM\\M03 - Programació\\UF4\\projecteFinal\\usuaris.txt");
+        File archivo = new File(".\\usuaris.txt");
         String oldPhrase = "El nom de l'usuari es: " + nom;
         try {
             usuaris.createNewFile();
@@ -190,10 +189,8 @@ public class Persona {
         }
     }
 
-    public void ferPartida(){
-        for (int i=0; i<5; i++){
-            sumarPartida();
-        }
+    public void escriurePartida(){
+        sumarPartida();
         sobrescriurePartides();
     }
 
@@ -201,7 +198,7 @@ public class Persona {
      * @uses busca el nom de l'usuari i treu tota la informació del fitxer
      */
     public void llegirNumPartides () {
-        File archivo = new File("C:\\Users\\Dani Gelabert\\Documents\\DAM\\M03 - Programació\\UF4\\projecteFinal\\usuaris.txt");
+        File archivo = new File(".\\usuaris.txt");
         String oldPhrase = "El nom de l'usuari es: " + nom;
 
         try {
