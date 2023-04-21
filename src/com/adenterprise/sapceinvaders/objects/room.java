@@ -19,7 +19,6 @@ public class room {
         ArrayList<Monstre2> monstres2 = new ArrayList<Monstre2>();
 
 
-
         for(int i = 0; i < room.sala.length; i++) {
             for(int j = 0; j < room.sala[i].length; j++) {
                 room.sala[i][j] = ' ';
@@ -29,9 +28,10 @@ public class room {
         for(int i = 0; i < room.sala.length - 8; i++) {
             for(int j = 0; j < room.sala[i].length; j++) {
                 if (i%2==0){
-//                    monstres1.add(new Monstre1())
+                    monstres1.add(new Monstre1(i,j));
                     room.sala[i][j] = 'U';
                 } else {
+                    monstres2.add(new Monstre2(i,j, false));
                     room.sala[i][j] = '0';
                 }
             }
@@ -102,9 +102,55 @@ public class room {
             if (error==1){
 
             } else {
+                for (int g = 0; g< monstres1.size(); g++){
+                    Monstre1 monstre = monstres1.get(g);
+                    room.sala[monstre.getX()][monstre.getY()]= ' ';
+                }
+                for (int f = 0; f< monstres2.size(); f++){
+                    Monstre2 monstre = monstres2.get(f);
+                    room.sala[monstre.getX()][monstre.getY()]= ' ';
+                }
+
+                for (int i = 0; i<monstres1.size(); i++){
+                    Monstre1 monstre = monstres1.get(i);
+                    if (monstre.getX()%2==0){
+                        if (monstre.getY()+1==12){
+                            monstre.setX(monstre.getX()+1);
+                        } else {
+                            monstre.setY(monstre.getY()+1);
+                        }
+                        room.sala[monstre.getX()][monstre.getY()] = 'U';
+                    } else {
+                        if (monstre.getY()-1==-1){
+                            monstre.setX(monstre.getX()+1);
+                        } else {
+                            monstre.setY(monstre.getY()-1);
+                        }
+                        room.sala[monstre.getX()][monstre.getY()] = 'U';
+                    }
+                }
+                for (int i = 0; i<monstres2.size(); i++){
+                    Monstre2 monstre = monstres2.get(i);
+                    if (monstre.getX()%2==0){
+                        if (monstre.getY()+1==12){
+                            monstre.setX(monstre.getX()+1);
+                        } else {
+                            monstre.setY(monstre.getY()+1);
+                        }
+                        room.sala[monstre.getX()][monstre.getY()] = '0';
+
+                    } else {
+                        if (monstre.getY()-1==-1){
+                            monstre.setX(monstre.getX()+1);
+                        } else {
+                            monstre.setY(monstre.getY()-1);
+                        }
+                        room.sala[monstre.getX()][monstre.getY()] = '0';
+                    }
+                }
+
                 for (int i=0; i<balas.size(); i++){
                     Bala bala = balas.get(i);
-                    System.out.println(bala.getX()-1);
                     if(bala.getX()-1 ==-1){
                         room.sala[bala.getX()][bala.getY()]=' ';
                         balas.remove(i);
@@ -115,6 +161,21 @@ public class room {
                             room.sala[bala.getX()][bala.getY()] = ' ';
                             balas.remove(i);
                             i--;
+                            for (int j=0; j<monstres1.size(); j++){
+                                Monstre1 monstre = monstres1.get(j);
+                                if (monstre.getX()==bala.getX()-1 && monstre.getY() == bala.getY()){
+                                    monstres1.remove(j);
+                                    j--;
+                                }
+
+                            }
+                            for (int k=0; k<monstres2.size(); k++){
+                                Monstre2 monstre = monstres2.get(k);
+                                if (monstre.getX()==bala.getX()-1 && monstre.getY() == bala.getY()){
+                                    monstres2.remove(k);
+                                    k--;
+                                }
+                            }
                         } else {
                             bala.setX(bala.getX() - 1);
                             room.sala[bala.getX()][bala.getY()] = 'o';

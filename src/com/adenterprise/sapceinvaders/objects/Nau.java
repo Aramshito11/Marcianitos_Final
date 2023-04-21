@@ -51,8 +51,8 @@ public class Nau {
     /**
      * @uses aquest main només el faig servir per fer proves. Al executar el programa final aquest no fa res
      */
-    public static void main(String[] args) {
-        Nau n1=new Nau(1, 3);
-        n1.showData();
-    }
+//    public static void main(String[] args) {
+//        Nau n1=new Nau(1, 3);
+//        n1.showData();
+//    }
 }

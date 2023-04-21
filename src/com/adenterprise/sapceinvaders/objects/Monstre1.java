@@ -6,14 +6,15 @@ package com.adenterprise.sapceinvaders.objects;
  */
 public class Monstre1 extends Monstres{
 
-    public Monstre1(int linea) {
-        super(1, linea, 1);
+    public Monstre1(int x, int y) {
+        super(1, x, y, 1);
     }
 
     @Override
     public void showData(){
         System.out.println("\n\nMONSTRE");
-        System.out.println("Linea: "+getLinea());
+        System.out.println("Pos x: "+getX());
+        System.out.println("Pos y: "+getY());
         System.out.println("Vides: "+getVides());
         System.out.println("Tipus: "+getTipus());
     }

@@ -10,8 +10,8 @@ public class Monstre2 extends Monstres{
     private boolean arma;
 
 
-    public Monstre2(int linea, boolean arma) {
-        super(1, linea, 2);
+    public Monstre2(int x, int y, boolean arma) {
+        super(1, x, y, 2);
         this.arma = arma;
     }
 
@@ -27,7 +27,8 @@ public class Monstre2 extends Monstres{
     @Override
     public void showData() {
         System.out.println("\n\nMONSTRE");
-        System.out.println("Linea: "+getLinea());
+        System.out.println("Pos x: "+getX());
+        System.out.println("Pos y: "+getY());
         System.out.println("Vides: "+getVides());
         System.out.println("Tipus: "+getTipus());
         if (isArma()==true)

@@ -13,13 +13,15 @@ abstract class Monstres{
     /**
      * @param linea on posarem el marcianito
      */
-    private int linea;
+    private int x;
+    private int y;
     private int vides;
 
 
-    public Monstres(int tipus, int linea, int vides) {
+    public Monstres(int tipus, int x, int y, int vides) {
         this.tipus = tipus;
-        this.linea = linea;
+        this.x = x;
+        this.y = y;
         this.vides = vides;
     }
 
@@ -31,12 +33,20 @@ abstract class Monstres{
         this.tipus = tipus;
     }
 
-    public int getLinea() {
-        return linea;
+    public void setY(int y) {
+        this.y = y;
     }
 
-    public void setLinea(int linea) {
-        this.linea = linea;
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
     }
 
     public int getVides() {
@@ -63,10 +73,10 @@ public class Monstre {
     /**
      * @uses aquest main només el faig servir per fer proves. Al executar el programa final aquest no fa res
      */
-    public static void main(String[] args) {
-        Monstre1 m1=new Monstre1(1);
-        Monstre2 m2=new Monstre2(2, false);
-        m1.showData();
-        m2.showData();
-    }
+//    public static void main(String[] args) {
+//        Monstre1 m1=new Monstre1(1);
+//        Monstre2 m2=new Monstre2(2, false);
+//        m1.showData();
+//        m2.showData();
+//    }
 }
